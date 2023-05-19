@@ -28,7 +28,7 @@ const blogs = [
 const Blog = () => {
   return (
     <Container className="py-24">
-      <h1 className="text-center text-4xl mb-12">Blog</h1>
+      <h1 className="text-center text-4xl mb-12 font-bold">Blog</h1>
       <div className="flex flex-wrap gap-4 justify-center">
         {blogs.map((blog) => (
           <SingleBlog key={blog.id} title={blog.title} content={blog.content} />
