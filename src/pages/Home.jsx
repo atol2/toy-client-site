@@ -1,7 +1,11 @@
+import LoginForm from "../components/Auth/LoginForm";
+import SignUp from "../components/Auth/SignUpForm";
+
 const Home = () => {
     return (
       <div>
-        <h1>Home</h1>
+        <LoginForm />
+        <SignUp />
       </div>
     );
   };
