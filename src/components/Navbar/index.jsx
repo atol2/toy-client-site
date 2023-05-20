@@ -3,8 +3,7 @@ import { Link } from "react-router-dom";
 import { auth } from "../../utils/firebase";
 import useFirebaseUser from "../../hooks/useFirebaseUser";
 const Navbar = () => {
-    // const currentUser = auth.currentUser;
-    const { user, setUser } = useFirebaseUser();
+  const { user } = useFirebaseUser();
     console.log(user);
     const handleLogOut = async () => {
       await auth.signOut();
@@ -38,7 +37,12 @@ const Navbar = () => {
             </li>
             <li tabIndex={0}>
               <Link to="/toys">All Toys</Link>
-            </li>
+              </li>{" "}
+            {user && (
+              <li>
+                <Link to="/my-toys">My Toys</Link>
+              </li>
+            )}
             <li>
               <Link to="/add-toy">Add A Toy</Link>
             </li>
@@ -59,6 +63,11 @@ const Navbar = () => {
           <li tabIndex={0}>
             <Link to="/toys">All Toys</Link>
           </li>
+          {user && (
+            <li>
+              <Link to="/my-toys">My Toys</Link>
+            </li>
+          )}
           <li>
             <Link to="/add-toy">Add A Toy</Link>
           </li>
