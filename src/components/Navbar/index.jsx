@@ -1,6 +1,14 @@
 import { NavLink } from "react-router-dom";
 import { Link } from "react-router-dom";
+import { auth } from "../../utils/firebase";
+import useFirebaseUser from "../../hooks/useFirebaseUser";
 const Navbar = () => {
+    // const currentUser = auth.currentUser;
+    const { user, setUser } = useFirebaseUser();
+    console.log(user);
+    const handleLogOut = async () => {
+      await auth.signOut();
+    };
   return (
     <div className="navbar bg-base-100 max-w-[1200px] mx-auto">
       <div className="navbar-start">
@@ -60,12 +68,30 @@ const Navbar = () => {
         </ul>
       </div>
       <div className="navbar-end">
-        <NavLink className="btn btn-outline btn-md mr-2" to="/login">
-          Login
-        </NavLink>
-        <NavLink className="btn btn-md" to="/signup">
-          SignUp
-        </NavLink>
+      {user ? (
+          <div className="dropdown">
+            <label tabIndex={0} className="btn btn-outline  m-1">
+              {user?.displayName || user?.email}
+            </label>
+            <ul
+              tabIndex={0}
+              className="dropdown-content menu p-2 shadow bg-base-100 rounded-box"
+            >
+              <li>
+                <button onClick={handleLogOut}>Log Out</button>
+              </li>
+            </ul>
+          </div>
+        ) : (
+          <>
+            <NavLink className="btn btn-outline btn-md mr-2" to="/login">
+              Login
+            </NavLink>
+            <NavLink className="btn btn-md" to="/signup">
+              SignUp
+            </NavLink>
+          </>
+        )}
       </div>
     </div>
   );
