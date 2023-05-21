@@ -4,7 +4,6 @@ import { auth } from "../../utils/firebase";
 import useFirebaseUser from "../../hooks/useFirebaseUser";
 const Navbar = () => {
   const { user } = useFirebaseUser();
-    console.log(user);
     const handleLogOut = async () => {
       await auth.signOut();
     };
@@ -39,13 +38,16 @@ const Navbar = () => {
               <Link to="/toys">All Toys</Link>
               </li>{" "}
             {user && (
+              <>
               <li>
                 <Link to="/my-toys">My Toys</Link>
               </li>
+              <li>
+                <Link to="/add-toy">Add A Toy</Link>
+              </li>
+            </>
             )}
-            <li>
-              <Link to="/add-toy">Add A Toy</Link>
-            </li>
+            
             <li>
               <Link to="/blog">Blog</Link>
             </li>
@@ -64,13 +66,16 @@ const Navbar = () => {
             <Link to="/toys">All Toys</Link>
           </li>
           {user && (
-            <li>
-              <Link to="/my-toys">My Toys</Link>
-            </li>
+              <>
+              <li>
+                <Link to="/my-toys">My Toys</Link>
+              </li>
+              <li>
+                <Link to="/add-toy">Add A Toy</Link>
+              </li>
+            </>
           )}
-          <li>
-            <Link to="/add-toy">Add A Toy</Link>
-          </li>
+          
           <li>
             <Link to="/blog">Blog</Link>
           </li>
@@ -78,19 +83,17 @@ const Navbar = () => {
       </div>
       <div className="navbar-end">
       {user ? (
-          <div className="dropdown">
-            <label tabIndex={0} className="btn btn-outline  m-1">
-              {user?.displayName || user?.email}
-            </label>
-            <ul
-              tabIndex={0}
-              className="dropdown-content menu p-2 shadow bg-base-100 rounded-box"
+           <>
+           <button
+             className="btn btn-outline btn-md mr-2"
+             onClick={handleLogOut}
             >
-              <li>
-                <button onClick={handleLogOut}>Log Out</button>
-              </li>
-            </ul>
-          </div>
+               Log Out
+            </button>
+            <NavLink className="btn btn-md" to="/signup">
+              {user?.displayName || user?.email}
+            </NavLink>
+          </>
         ) : (
           <>
             <NavLink className="btn btn-outline btn-md mr-2" to="/login">

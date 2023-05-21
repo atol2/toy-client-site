@@ -1,9 +1,12 @@
+import React from 'react';
+
+
 const ToyDetails = () => {
     return (
-      <div>
-        <h1>Toy Details</h1>
-      </div>
+        <div>
+            
+        </div>
     );
-  };
-  
-  export default ToyDetails;
+};
+
+export default ToyDetails;

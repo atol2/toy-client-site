@@ -9,7 +9,6 @@ import {
   import AllToys from "../../pages/AllToys";
   import Layout from "../Layout";
   import NotFoundPage from "../../pages/404";
-  import BlogDetails from "../../pages/BlogDetails";
   import Login from "../../pages/Login";
   import SignUp from "../../pages/SignUp";
   import PrivateRoute from "../Shared/PrivateRoute";
@@ -22,13 +21,13 @@ import {
         <Route path="/" element={<Layout />}>
           <Route index element={<Home />} />
           <Route path="/blog" element={<Blog />} />
-          <Route path="/blog/:slug" element={<BlogDetails />} />
           <Route path="/toys" element={<AllToys />} />
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<SignUp />} />
           <Route element={<PrivateRoute />}>
           <Route path="my-toys" element={<MyToys />} />
           <Route path="/add-toy" element={<AddToy />} />
+          <Route path="/toy-details/" element={<ToyDetails />} />
           <Route path="/toys/:slug" element={<ToyDetails />} />
         </Route>
         </Route>
