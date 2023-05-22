@@ -13,7 +13,11 @@ import {
   import SignUp from "../../pages/SignUp";
   import PrivateRoute from "../Shared/PrivateRoute";
   import MyToys from "../../pages/MyToys";
-  import ToyDetails from "../../pages/ToyDetails";
+  import ToyDetails from "../../pages/ToyDetails"
+  import Details from '../../pages/Details';
+
+
+  
   
   const router = createBrowserRouter(
     createRoutesFromElements(
@@ -29,6 +33,11 @@ import {
           <Route path="/add-toy" element={<AddToy />} />
           <Route path="/toy-details/" element={<ToyDetails />} />
           <Route path="/toys/:slug" element={<ToyDetails />} />
+          <Route path="/details/:id" element={<Details />} />
+          
+
+          
+          
         </Route>
         </Route>
         <Route path="*" element={<NotFoundPage />} />

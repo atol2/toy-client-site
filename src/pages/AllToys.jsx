@@ -4,6 +4,7 @@ import Container from "../components/Shared/Container";
 
 const AllToys = () => {
   const [toys, setToys] = useState([]);
+  console.log(toys);
  
   useEffect(() => {
     fetch('http://localhost:5000/toys')

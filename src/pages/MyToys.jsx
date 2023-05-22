@@ -9,7 +9,7 @@ const MyToys = () => {
   const [toys, setToys] = useState([]);
 
   useEffect(() => {
-    fetch(`http://localhost:5000/bookings?email=${user?.email}`)
+    fetch(`http://localhost:5000/bookings?sellerEmail=${user?.email}`)
       .then((res) => res.json())
       .then((data) => setToys(data));
   }, [user]);

@@ -17,7 +17,9 @@ import useFirebaseUser from "../hooks/useFirebaseUser";
     sellerName: user?.displayName ?? "",
     sellerEmail: user?.email ?? "",
     subCategory: "",
+    rating:"",
     price: "",
+    
     quantity: "",
     description: "",
   });

@@ -33,8 +33,8 @@ const Home = () => {
 
     return (
       <Container className="mb-12"> 
-      <div className="flex">
-      <div className="carousel w-4/6 h-3/6 flex">
+      <div className="flex flex-col sm:flex-row">
+      <div className="carousel w-full sm:w-4/6 h-auto sm:h-3/6 flex">
         <div id="slide1" className="carousel-item relative w-full">
           <img
             src="https://m.media-amazon.com/images/I/71bfTkP5e5L.jpg"
@@ -92,8 +92,8 @@ const Home = () => {
           </div>
         </div>
       </div>
-      <div className="font-bold text-lg text-center justify-self-center py-16">
-          Welcome To Our Kids's Special Car Zone.<br></br> Here you can find the best products for your babies.
+      <div className="font-bold text-lg text-center justify-self-center py-8 sm:py-16">
+          Welcome To Our Kids's Special Car Zone.<br></br> Here you can find the best products for your kids.
 
           <br />
           <img className="h-4/6 text-center pl-8" src="https://i.pinimg.com/originals/e7/20/5b/e7205b90eaf734abfd77d67a348c4c09.jpg" alt="" />
