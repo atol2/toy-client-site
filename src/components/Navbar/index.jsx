@@ -57,10 +57,13 @@ const Navbar = () => {
           CarsToys
         </Link> */}
         <div className="norml-case text-lg font-extrabold flex">
-            <div><h2>CarsToys</h2></div>
-           <div>
+            
+           
            <img src="https://cdn5.vectorstock.com/i/thumb-large/91/89/car-toys-logo-icon-vector-35629189.jpg" alt="" />
-           </div>
+           
+        </div>
+        <div>
+          Car Toys
         </div>
       </div>
       <div className="navbar-center hidden lg:flex">

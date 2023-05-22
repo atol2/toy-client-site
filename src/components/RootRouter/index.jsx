@@ -26,7 +26,7 @@ import Upadate from "../../pages/Upadate";
      <Route path="/" element={<Layout />}>
        <Route index element={<Home />} />
        <Route path="/blog" element={<Blog />} />
-     <Route path="/toys" element={<AllToys />} />
+       <Route path="/toys" element={<AllToys />} />  
       <Route path="/login" element={<Login />} />
        <Route path="/signup" element={<SignUp />} />
       <Route element={<PrivateRoute />}>
@@ -37,7 +37,7 @@ import Upadate from "../../pages/Upadate";
         element={<ToyDetails />} />
       <Route path="/toys/:id" 
       element={<ToyDetails />}
-      loader={({ params }) => fetch(`https://toy-marketplace-server-ashen.vercel.app/${params.id}`)}
+      loader={({ params }) => fetch(`https://toy-marketplace-server-ashen.vercel.app/bookings/${params.id}`)}
       />
 
         {/* <Route path="/details/:id" element={<Details />}  />  */}
@@ -49,7 +49,7 @@ import Upadate from "../../pages/Upadate";
        <Route
                  path="/update/:id"
                  element={<Upadate />}
-                 loader={({ params }) => fetch(`https://toy-marketplace-server-ashen.vercel.app/${params.id}`)}
+                 loader={({ params }) => fetch(`https://toy-marketplace-server-ashen.vercel.app/bookings/${params.id}`)}
                  />
           
           

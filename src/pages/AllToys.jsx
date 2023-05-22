@@ -12,23 +12,23 @@ const AllToys = () => {
       .then(data => setToys(data))
   }, []);
 
-  // const handleDelete = (id) => {
-  //   const proceed = confirm("Are you sure you want to delete?");
-  //   if (proceed) {
-  //     fetch(`http://localhost:5000/bookings/${id}`, {
-  //       method: "DELETE",
-  //     })
-  //       .then((res) => res.json())
-  //       .then((data) => {
-  //         console.log(data);
-  //         if (data.deletedCount > 0) {
-  //           alert("Deleted Successfully");
-  //           const remaining = toys.filter((toy) => toy._id !== id);
-  //           setToys(remaining);
-  //         }
-  //       });
-  //   }
-  // };
+  const handleDelete = (id) => {
+    const proceed = confirm("Are you sure you want to delete?");
+    if (proceed) {
+      fetch(`https://toy-marketplace-server-ashen.vercel.app/toys/${id}`, {
+        method: "DELETE",
+      })
+        .then((res) => res.json())
+        .then((data) => {
+          console.log(data);
+          if (data.deletedCount > 0) {
+            alert("Deleted Successfully");
+            const remaining = toys.filter((toy) => toy._id !== id);
+            setToys(remaining);
+          }
+        });
+    }
+  };
 
 
 
@@ -47,7 +47,7 @@ const AllToys = () => {
               <th>Available</th>
               <th>Seller Name</th>
               <th>Details</th>
-              {/* <th>Delete</th> */}
+               <th>Delete</th> 
             </tr>
           </thead>
           <tbody>
@@ -82,17 +82,15 @@ const AllToys = () => {
                   <span className="btn btn-ghost btn-xs">{toy.sellerName}</span>
                 </th>
                 <th>
-                  <Link to={`/toys/${toy.slug}`}>
+                  <Link to={`/toys/${toy._id}`}>
                     <button className="btn btn-outline btn-xs">
                       View Details
                     </button>
                   </Link>
                 </th>
-                {/* <th>  */}
-                  {/* <button className="btn btn-sm" onClick={handleDelete}>
-                    Delete
-                  </button>
-                </th> */}
+                 <td>  
+                 <button onClick={() => handleDelete(toy._id)} className="btn btn-sm">Delete</button>
+                </td> 
               </tr>
             ))}
           </tbody>
@@ -101,5 +99,3 @@ const AllToys = () => {
     </Container>
   );
 };
-
-export default AllToys;

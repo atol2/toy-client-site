@@ -4,6 +4,7 @@ import { useLoaderData } from 'react-router';
 
 const ToyDetails = () => {
     const toy = useLoaderData()
+    console.log(toy);
     const {description,
         imageUrl,
         name,
@@ -22,10 +23,10 @@ const ToyDetails = () => {
     <div>
       <h1 className="text-5xl font-bold">{name}</h1>
       <h1 className="text-3xl font-bold">{subCategory}</h1>
-      <p className="py-6">{description}</p>
-      <p className="py-6">$ {price}</p>
-      <p className="py-6">Rating : {rating}</p>
-      <button className="btn btn-primary">Get Started</button>
+      <p className="py-3">{description}</p>
+      <p className="py-3">$ {price}</p>
+      <p className="py-3">Rating : {rating}</p>
+      <button className="btn btn-primary">Buy Me</button>
     </div>
   </div>
 </div>
