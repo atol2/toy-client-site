@@ -5,12 +5,33 @@ import Container from "../components/Shared/Container";
 const AllToys = () => {
   const [toys, setToys] = useState([]);
   console.log(toys);
- 
+
   useEffect(() => {
-    fetch('http://localhost:5000/toys')
-    .then((res) => res.json())
-    .then(data=>setToys(data))
+    fetch('https://toy-marketplace-server-ashen.vercel.app/toys')
+      .then((res) => res.json())
+      .then(data => setToys(data))
   }, []);
+
+  // const handleDelete = (id) => {
+  //   const proceed = confirm("Are you sure you want to delete?");
+  //   if (proceed) {
+  //     fetch(`http://localhost:5000/bookings/${id}`, {
+  //       method: "DELETE",
+  //     })
+  //       .then((res) => res.json())
+  //       .then((data) => {
+  //         console.log(data);
+  //         if (data.deletedCount > 0) {
+  //           alert("Deleted Successfully");
+  //           const remaining = toys.filter((toy) => toy._id !== id);
+  //           setToys(remaining);
+  //         }
+  //       });
+  //   }
+  // };
+
+
+
   return (
     <Container className="my-24">
       <h1 className="text-center text-4xl font-bold mb-8">All Toys</h1>
@@ -18,7 +39,7 @@ const AllToys = () => {
         <table className="table w-full">
           <thead>
             <tr>
-              
+
               <th>Toy Name</th>
               <th>Sub Category</th>
               <th>Ratings</th>
@@ -26,7 +47,7 @@ const AllToys = () => {
               <th>Available</th>
               <th>Seller Name</th>
               <th>Details</th>
-              <th>Delete</th>
+              {/* <th>Delete</th> */}
             </tr>
           </thead>
           <tbody>
@@ -52,7 +73,7 @@ const AllToys = () => {
                   <br />
                   {/* <span className="badge badge-ghost badge-sm"></span> */}
                 </td>
-                <td>{toy.ratings}</td>
+                <td>{toy.rating}</td>
                 <td>${toy.price}</td>
                 <th>
                   <span className="btn btn-ghost btn-xs">{toy.quantity}</span>
@@ -67,6 +88,11 @@ const AllToys = () => {
                     </button>
                   </Link>
                 </th>
+                {/* <th>  */}
+                  {/* <button className="btn btn-sm" onClick={handleDelete}>
+                    Delete
+                  </button>
+                </th> */}
               </tr>
             ))}
           </tbody>

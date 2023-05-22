@@ -9,7 +9,7 @@ const Home = () => {
   const [categories,setCategories]=useState([])
   const [active, setActive]= useState('Electric')
   useEffect(()=>{
-    fetch(`http://localhost:5000/toys/${active}`)
+    fetch(`https://toy-marketplace-server-ashen.vercel.app/${active}`)
     .then(res=>res.json())
     .then(data=>setCategories(data))
   },[active]);

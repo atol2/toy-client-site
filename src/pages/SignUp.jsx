@@ -1,6 +1,13 @@
 import SignUpForm from "../components/Auth/SignUpForm";
 
+
 const SignUp = () => {
+    // const navigate = useNavigate();
+    // const { user } = useFirebaseUser();
+    // if (user) return <Outlet />;
+    // useEffect(() => {
+    //     navigate("/");
+    // })
   return (
     <div>
       <section className="h-screen">

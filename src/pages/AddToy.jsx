@@ -40,7 +40,7 @@ import useFirebaseUser from "../hooks/useFirebaseUser";
     event.preventDefault();
     try {
       // First fetch request
-      const response1 = await fetch('http://localhost:5000/toys', {
+      const response1 = await fetch('https://toy-marketplace-server-ashen.vercel.app/toys', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -59,7 +59,7 @@ import useFirebaseUser from "../hooks/useFirebaseUser";
       toast.success('Toy Added Successfully');
   
       // Second fetch request
-      const response2 = await fetch('http://localhost:5000/bookings', {
+      const response2 = await fetch('https://toy-marketplace-server-ashen.vercel.app/bookings', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

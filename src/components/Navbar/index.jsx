@@ -53,9 +53,15 @@ const Navbar = () => {
             </li>
           </ul>
         </div>
-        <Link to="/" className="btn btn-ghost normal-case text-xl">
-          Toy Marketplace
-        </Link>
+        {/* <Link to="/" className="btn btn-ghost normal-case text-xl">
+          CarsToys
+        </Link> */}
+        <div className="norml-case text-lg font-extrabold flex">
+            <div><h2>CarsToys</h2></div>
+           <div>
+           <img src="https://cdn5.vectorstock.com/i/thumb-large/91/89/car-toys-logo-icon-vector-35629189.jpg" alt="" />
+           </div>
+        </div>
       </div>
       <div className="navbar-center hidden lg:flex">
         <ul className="menu menu-horizontal px-1">
@@ -90,8 +96,15 @@ const Navbar = () => {
             >
                Log Out
             </button>
-            <NavLink className="btn btn-md" to="/signup">
-              {user?.displayName || user?.email}
+            <NavLink  to="/signup">
+            {user && <div className="tooltip tooltip-right" data-tip={user?.displayName}>
+                    <div className="avatar me-4">
+  <div className="w-12 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
+    <img src={user ?.photoURL} />
+  </div>
+</div>
+</div>}
+
             </NavLink>
           </>
         ) : (

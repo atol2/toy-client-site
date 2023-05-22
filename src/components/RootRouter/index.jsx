@@ -15,34 +15,53 @@ import {
   import MyToys from "../../pages/MyToys";
   import ToyDetails from "../../pages/ToyDetails"
   import Details from '../../pages/Details';
+import Upadate from "../../pages/Upadate";
 
 
   
   
-  const router = createBrowserRouter(
-    createRoutesFromElements(
-      <Route path="/">
-        <Route path="/" element={<Layout />}>
-          <Route index element={<Home />} />
-          <Route path="/blog" element={<Blog />} />
-          <Route path="/toys" element={<AllToys />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/signup" element={<SignUp />} />
-          <Route element={<PrivateRoute />}>
-          <Route path="my-toys" element={<MyToys />} />
-          <Route path="/add-toy" element={<AddToy />} />
-          <Route path="/toy-details/" element={<ToyDetails />} />
-          <Route path="/toys/:slug" element={<ToyDetails />} />
-          <Route path="/details/:id" element={<Details />} />
+   const router = createBrowserRouter(
+     createRoutesFromElements(
+        <Route path="/">
+     <Route path="/" element={<Layout />}>
+       <Route index element={<Home />} />
+       <Route path="/blog" element={<Blog />} />
+     <Route path="/toys" element={<AllToys />} />
+      <Route path="/login" element={<Login />} />
+       <Route path="/signup" element={<SignUp />} />
+      <Route element={<PrivateRoute />}>
+      <Route path="my-toys" element={<MyToys />} />
+       <Route path="/add-toy" element={<AddToy />} />
+       <Route 
+       path="/toy-details/"
+        element={<ToyDetails />} />
+      <Route path="/toys/:id" 
+      element={<ToyDetails />}
+      loader={({ params }) => fetch(`https://toy-marketplace-server-ashen.vercel.app/${params.id}`)}
+      />
+
+        {/* <Route path="/details/:id" element={<Details />}  />  */}
+       <Route
+                 path="/details/:id"
+                 element={<Details />}
+                 loader={({ params }) => fetch(`https://toy-marketplace-server-ashen.vercel.app/getToys/${params.id}`)}
+                 />
+       <Route
+                 path="/update/:id"
+                 element={<Upadate />}
+                 loader={({ params }) => fetch(`https://toy-marketplace-server-ashen.vercel.app/${params.id}`)}
+                 />
+          
+          
           
 
           
           
-        </Route>
-        </Route>
-        <Route path="*" element={<NotFoundPage />} />
-      </Route>
-    )
-  );
+     </Route>
+     </Route>
+    <Route path="*" element={<NotFoundPage />} />
+       </Route>
+      )
+   );
   
   export default router;
