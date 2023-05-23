@@ -12,7 +12,7 @@ const Upadate = () => {
     quantity: toy.quantity,
 
   })
-  console.log(toy);
+  console.log(toy);  
   const { _id,
     imageUrl,
     name,
@@ -57,7 +57,7 @@ const Upadate = () => {
 
 
   }
-  const handleChange = () => {
+  const handleChange = (e) => {
     setUpdateData(prevData => ({
       ...prevData,
       [e.target.name]: e.target.value,
@@ -117,7 +117,7 @@ const Upadate = () => {
             name="subCategory"
 
             onClick={handleChange}
-            value={subCategory}
+            value={subCategory} 
             label="Sub Category"
           />
           <InputGroup
@@ -125,7 +125,6 @@ const Upadate = () => {
             required={true}
             onClick={handleChange}
             name="price"
-            value={updateData.price}
             label="Price"
             type="number"
           />
@@ -134,7 +133,6 @@ const Upadate = () => {
             required={true}
             onClick={handleChange}
             name="quantity"
-            value={updateData.quantity}
             label="Available Quantity"
             type="number"
           />
@@ -143,7 +141,6 @@ const Upadate = () => {
             required={true}
             onClick={handleChange}
             name="description"
-            value={updateData.description}
             label="Description"
             inputType="textarea"
           />
