@@ -5,19 +5,25 @@ import useFirebaseUser from "../hooks/useFirebaseUser";
 import Container from "../components/Shared/Container";
 
 const MyToys = () => {
-    const { user } = useFirebaseUser();
+    const { user,loading } = useFirebaseUser();
     const [toys, setToys] = useState([]);
 
     useEffect(() => {
-        fetch(`https://toy-marketplace-server-ashen.vercel.app/bookings?sellerEmail=${user?.email}`)
+        fetch(`https://toy-shop-server-new.vercel.app/getToys?sellerEmail=${user?.email}`)
             .then((res) => res.json())
-            .then((data) => setToys(data));
-    }, [user]);
+            .then((data) => {
+                console.log(data);
+                if(data.length !== 0) {
+                    setToys(data)
+                }
+                
+            });
+    }, [user?.email]);
 
     const handleDelete = (id) => {
         const proceed = confirm("Are you sure you want to delete?");
         if (proceed) {
-            fetch(`https://toy-marketplace-server-ashen.vercel.app/bookings/${id}`, {
+            fetch(`https://toy-shop-server-new.vercel.app/getToys/${id}`, {
                 method: "DELETE",
             })
                 .then((res) => res.json())

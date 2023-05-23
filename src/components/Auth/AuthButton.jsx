@@ -3,22 +3,25 @@ import { auth } from "../../utils/firebase";
 import toast from "react-hot-toast";
 import { useState } from "react";
 import Spinner from "../Shared/Spinner";
+import { useNavigate } from "react-router-dom";
 const AuthButton = () => {
-    const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const navigate = useNavigate();
   const SignUpWithGoogle = async () => {
     try {
-        setLoading(true);
-        const provider = new GoogleAuthProvider();
-        const authResponse = await signInWithPopup(auth, provider);
-        toast.success("Logged in successfully!");
-        console.log(authResponse);
-      } catch (error) {
-        setLoading(false);
-        console.error(error.message);
-        toast.error("Login Failed!");
-      }
-  
+      setLoading(true);
+      const provider = new GoogleAuthProvider();
+      const authResponse = await signInWithPopup(auth, provider);
+      navigate('/');
+      toast.success("Logged in successfully!");
+      console.log(authResponse);
+    } catch (error) {
       setLoading(false);
+      console.error(error.message);
+      toast.error("Login Failed!");
+    }
+
+    setLoading(false);
   };
 
   return (
@@ -31,7 +34,7 @@ const AuthButton = () => {
       data-te-ripple-init
       data-te-ripple-color="light"
     >
-            {loading ? (
+      {loading ? (
         <Spinner />
       ) : (
         <>

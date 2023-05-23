@@ -1,12 +1,16 @@
 import { Outlet, useNavigate } from "react-router-dom";
 import useFirebaseUser from "../../hooks/useFirebaseUser";
-import { useEffect } from "react";
+// import { useEffect } from "react";
 const PrivateRoute = () => {
     const navigate = useNavigate();
-    const { user } = useFirebaseUser();
+    const { user, loading } = useFirebaseUser();
+
+    if (loading) return <div>Loading...</div>
     // useEffect(() => {
-    if (user) return <Outlet />;
-    navigate("/login");
+
+    if (!user) return navigate("/login");
+
+    return <Outlet />;
     // }, [user]) 
 
 

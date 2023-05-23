@@ -7,28 +7,28 @@ const AllToys = () => {
   console.log(toys);
 
   useEffect(() => {
-    fetch('https://toy-marketplace-server-ashen.vercel.app/toys')
+    fetch('https://toy-shop-server-new.vercel.app/toys')
       .then((res) => res.json())
       .then(data => setToys(data))
   }, []);
 
-  const handleDelete = (id) => {
-    const proceed = confirm("Are you sure you want to delete?");
-    if (proceed) {
-      fetch(`https://toy-marketplace-server-ashen.vercel.app/toys/${id}`, {
-        method: "DELETE",
-      })
-        .then((res) => res.json())
-        .then((data) => {
-          console.log(data);
-          if (data.deletedCount > 0) {
-            alert("Deleted Successfully");
-            const remaining = toys.filter((toy) => toy._id !== id);
-            setToys(remaining);
-          }
-        });
-    }
-  };
+  // const handleDelete = (id) => {
+  //   const proceed = confirm("Are you sure you want to delete?");
+  //   if (proceed) {
+  //     fetch(`https://toy-shop-server-new.vercel.app/toys/${id}`, {
+  //       method: "DELETE",
+  //     })
+  //       .then((res) => res.json())
+  //       .then((data) => {
+  //         console.log(data);
+  //         if (data.deletedCount > 0) {
+  //           alert("Deleted Successfully");
+  //           const remaining = toys.filter((toy) => toy._id !== id);
+  //           setToys(remaining);
+  //         }
+  //       });
+  //   }
+  // };
 
 
 
@@ -47,11 +47,11 @@ const AllToys = () => {
               <th>Available</th>
               <th>Seller Name</th>
               <th>Details</th>
-               <th>Delete</th> 
+               {/* <th>Delete</th>  */}
             </tr>
           </thead>
           <tbody>
-            {toys.slice().map((toy) => (
+            {toys.slice(0,20).map((toy) => (
               <tr key={toy._id}>
                 <td>
                   <div className="flex items-center space-x-3">
@@ -88,9 +88,9 @@ const AllToys = () => {
                     </button>
                   </Link>
                 </th>
-                 <td>  
+                 {/* <td>  
                  <button onClick={() => handleDelete(toy._id)} className="btn btn-sm">Delete</button>
-                </td> 
+                </td>  */}
               </tr>
             ))}
           </tbody>
@@ -99,3 +99,4 @@ const AllToys = () => {
     </Container>
   );
 };
+export default AllToys;

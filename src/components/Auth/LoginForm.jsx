@@ -1,7 +1,7 @@
 import { useState } from "react";
 import toast from "react-hot-toast";
 import { signInWithEmailAndPassword } from "firebase/auth";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { auth } from "../../utils/firebase";
 import AuthButton from "./AuthButton";
 import Spinner from "../Shared/Spinner";
@@ -13,6 +13,8 @@ const LoginForm = () => {
   const [loading, setLoading] = useState(false);
   const [password, setPassword] = useState("");
   const [error, setError] = useState(null);
+
+  const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -33,6 +35,7 @@ const LoginForm = () => {
       );
       console.log(authResponse);
       toast.success("Logged in successfully!");
+      navigate('/');
     } catch (error) {
       setError(error.message);
       toast.error("Login Failed!");

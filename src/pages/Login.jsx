@@ -1,15 +1,9 @@
 import { useNavigate, Outlet } from "react-router-dom";
 import LoginForm from "../components/Auth/LoginForm";
-import useFirebaseUser from "../hooks/useFirebaseUser";
-import { useEffect } from "react";
+
 
 const Login = () => {
-    // const navigate = useNavigate();
-    // const { user } = useFirebaseUser();
-    // if (user) return <Outlet />;
-    // useEffect(() => {
-    //     navigate("/");
-    // })
+
     return (
         <div>
             <section className="h-screen">

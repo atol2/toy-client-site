@@ -10,16 +10,16 @@ import useFirebaseUser from "../hooks/useFirebaseUser";
 
 
 
-  const AddToy = () => {
+const AddToy = () => {
   const { user } = useFirebaseUser();
   const [form, setForm] = useState({
     name: "",
     sellerName: user?.displayName ?? "",
     sellerEmail: user?.email ?? "",
     subCategory: "",
-    rating:"",
+    rating: "",
     price: "",
-    
+
     quantity: "",
     description: "",
   });
@@ -40,7 +40,7 @@ import useFirebaseUser from "../hooks/useFirebaseUser";
     event.preventDefault();
     try {
       // First fetch request
-      const response1 = await fetch('https://toy-marketplace-server-ashen.vercel.app/toys', {
+      const response1 = await fetch('https://toy-shop-server-new.vercel.app/toys', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -53,13 +53,13 @@ import useFirebaseUser from "../hooks/useFirebaseUser";
           rating: Number(form.rating),
         }),
       });
-  
+
       const data1 = await response1.json();
       console.log(data1);
       toast.success('Toy Added Successfully');
-  
+
       // Second fetch request
-      const response2 = await fetch('https://toy-marketplace-server-ashen.vercel.app/bookings', {
+      const response2 = await fetch('https://toy-shop-server-new.vercel.app/bookings', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -73,9 +73,9 @@ import useFirebaseUser from "../hooks/useFirebaseUser";
           rating: Number(form.rating),
         }),
       });
-  
+
       const data2 = await response2.json();
-      
+
       toast.success('Booking Added Successfully');
       console.log(data2);
       // Perform actions with the second fetch response data
@@ -84,68 +84,68 @@ import useFirebaseUser from "../hooks/useFirebaseUser";
       toast.error('Something went wrong');
     }
   };
-    
+
   return (
     <Container className="my-16">
       <h1 className="text-center text-4xl font-semibold mb-4">Add a Toy</h1>
       <form onSubmit={handleSubmit}>
         <div className="flex flex-wrap gap-[4%] justify-start px-8">
           <InputGroup
-            required
+            required={true}
             name="name"
             placeholder="Enter Name"
             label="Name"
             value={form.name}
-            onClick={handleChange}
+            onChange={handleChange}
           />
           <InputGroup
-            required
+            required={true}
             name="sellerName"
             placeholder="Enter Seller Name"
             value={form.sellerName}
-            onClick={handleChange}
+            onChange={handleChange}
             label="Seller Name"
           />
           <InputGroup
-            required
+            required={true}
             name="sellerEmail"
             placeholder="Enter Seller Email"
             value={form.sellerEmail}
-            onClick={handleChange}
+            onChange={handleChange}
             label="Seller Email"
             type="email"
           />
           <InputGroup
-            required
+            required={true}
             name="imageUrl"
             placeholder="Enter Image Url"
             value={form.imageUrl}
-            onClick={handleChange}
+            onChange={handleChange}
             label="Image Url"
           />
           <InputGroup
-            required
+            required={true}
             name="rating"
             placeholder="Enter Rating"
             value={form.rating}
-            onClick={handleChange}
+            onChange={handleChange}
             label="Rating"
             type="number"
             min="0"
             max="5"
           />
           <InputGroup
-            required
+            required={true}
             name="subCategory"
             value={form.subCategory}
-            onClick={handleChange}
+            onChange={handleChange}
             placeholder="Enter Sub Category"
             label="Sub Category"
           />
           <InputGroup
             value={form.price}
-            required
-            onClick={handleChange}
+            required={true}
+            onChange={handleChange}
             name="price"
             placeholder="Enter Price"
             label="Price"
@@ -153,17 +153,17 @@ import useFirebaseUser from "../hooks/useFirebaseUser";
           />
           <InputGroup
             value={form.quantity}
-            required
-            onClick={handleChange}
+            required={true}
+            onChange={handleChange}
             name="quantity"
             placeholder="Enter Quantity"
             label="Available Quantity"
             type="number"
           />
           <InputGroup
-            required
+            required={true}
             value={form.description}
-            onClick={handleChange}
+            onChange={handleChange}
             name="description"
             placeholder="Enter Description"
             label="Description"
